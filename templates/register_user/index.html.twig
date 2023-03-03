@@ -1,0 +1,109 @@
+<html >
+<head>
+    {% block title %}
+        <title>Register</title>
+    {% endblock %}
+
+    {% block metacss %}
+        <meta charset="UTF-8">
+        <!---<title> Responsive Registration Form | CodingLab </title>--->
+        <link rel="stylesheet" href="{{ asset('AccountUser/AuthStyle.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+</head>
+{% block body %}
+    <body>
+    <div class="container">
+        <div class="title">Inscription</div>
+        <div class="content">
+            {{ form_start(form,{attr:{novalidate:'novalidate'}})}}
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Nom</span>
+                    {{ form_widget(form.nom,{'attr':{'class':'form-style','placeholder':'Entrez votre Nom'}}) }}
+                    {% if form_errors(form.nom) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <span class="details">Prenom</span>
+                    {{ form_widget(form.prenom,{'attr':{'class':'form-style','placeholder':'Entrez votre Prenom'}}) }}
+                    {% if form_errors(form.prenom) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    {{ form_widget(form.email,{'attr':{'class':'form-style','placeholder':'Entrez votre Email'}}) }}
+                    {% if form_errors(form.email) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.email) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <span class="details">Numéro de Téléphone</span>
+                    {{ form_widget(form.tel,{'attr':{'class':'form-style','placeholder':'Entrez votre Téléphone'}}) }}
+                    {% if form_errors(form.tel) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.tel) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <span class="details">Adress</span>
+                    {{ form_widget(form.adress,{'attr':{'class':'form-style','placeholder':'Entrez votre Adress'}}) }}
+                    {% if form_errors(form.adress) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.adress) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    <span class="details">Mot de Passe</span>
+                    {{ form_widget(form.password,{'attr':{'class':'form-style','placeholder':'Entrez votre Mot de passe'}}) }}
+                    {% if form_errors(form.password) is not empty %}
+                        <div class="alert text-warning" >
+                            {{ form_errors(form.password) }}
+                        </div>
+                    {% endif %}
+                </div>
+{#                <div class="input-box">#}
+{#                    <span class="details">Confirmer Mot de Passe</span>#}
+{#                    {{ form_widget(form.password.second,{'attr':{'class':'form-style','placeholder':'Confirmer votre Mot de Passe'}}) }}#}
+{#                    {% if form_errors(form.password.second) is not empty %}#}
+{#                        <div class="alert text-warning" >#}
+{#                            {{ form_errors(form.passwordsecond) }}#}
+{#                        </div>#}
+{#                    {% endif %}#}
+
+{#                </div>#}
+                <div class="input-box">
+                    <div class="custom-file-input">
+                        <span class="details">Image</span>
+                        {{ form_widget(form.photo,{'label_attr':{'class':'custom-file-input','placeholder':'Votre Image de Profile'}}) }}
+                    </div>
+                </div>
+
+
+
+            </div>
+            {{ form_rest(form) }}
+            <div class="button">
+                <input type="submit" value="Enregistrer">
+            </div>
+            <p >Vous utilisez déjà Sportify ?<a href="{{ path('app_login') }}" >Connexion</a></p>
+            <p ><a href="{{ path('homepage') }}" >Retour à la page d'Accueil</a></p>
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
+</html>

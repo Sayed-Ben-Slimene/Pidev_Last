@@ -1,0 +1,75 @@
+<html lang="en" dir="ltr">
+<head>
+    {% block Login %}
+        <title>Login</title>
+    {% endblock %}
+
+    {% block metacss %}
+        <meta charset="UTF-8">
+        <!---<title> Responsive Registration Form | CodingLab </title>--->
+        <link rel="stylesheet" href="{{ asset('AccountUser/LoginStyle.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+</head>
+
+{% block body %}
+    <body>
+
+    <div class="container">
+        <div class="title">Login</div>
+        <div class="content">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Email</span>
+                            {#    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>#}
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Entrez votre Email">
+
+                        </div>
+                    </div>
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Mot de passe</span>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Entrez votre Mot de passe" required>
+                            <p class="mb-0 mt-4 text-center"><a href="#" class="alert-link">Mot de passe oublié?</a></p>
+
+                        </div>
+                    </div>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    #}
+                    <div class="button">
+                        <input type="submit" value="Connexion">
+                    </div>
+                    {#    <button class="btn btn-lg btn-primary" type="submit">#}
+                    {#        Sign in#}
+                    {#    </button>#}
+                </div>
+            </form>
+            <p class="mb-0 mt-4 text-center">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}" class="alert-link">Inscrivez-vous</a></p>
+            <p ><a href="{{ path('homepage') }}" >Retour à la page d'Accueil</a></p>
+
+        </div>
+    </div>
+    </body>
+{% endblock %}

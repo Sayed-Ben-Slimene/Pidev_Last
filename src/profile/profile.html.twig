@@ -1,0 +1,87 @@
+{% extends 'admin_panel/Admin.html.twig' %}
+
+{% block title %}profile{% endblock %}
+
+{% block body %}
+
+    <div id="main_content">
+        <div class="page-loader-wrapper">
+            <div class="loader">
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-md-flex justify-content-between">
+                                <ul class="nav nav-tabs b-none">
+                                    <li class="nav-item"><i class="fa fa-plus"></i> Modifier l'utilisateur</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img class="rounded-circle p-1 bg-primary"  width="160" src="{{asset('uploads/users/'~user.image)}}"  alt="Profile Photo">
+                                    <div class="mt-3">
+                                        <h4>{{ user.nom }}{{ user.prenom }} </h4>
+                                        <p class="text-secondary mb-1">{{ user.email }}</p>
+
+                                        <a href="{{ path('Organisateurlist') }}" class="btn btn-outline-success">Retour à la Liste</a><br><br>
+                                        {{ include('user/_delete_form.html.twig') }}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ asset('AdminPanel/asset/bundles/sweetalert.bundle.js')}}"></script>
+    <script src="{{ asset('AdminPanel/asset/plugins/dropify/js/dropify.min.js')}}"></script>
+    <script src="{{ asset('AdminPanel/asset/js/page/sweetalert.js')}}"></script>
+    <script>
+        $(function() {
+            "use strict";
+
+            $('.dropify').dropify();
+
+            var drEvent = $('#dropify-event').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element) {
+                alert('File deleted');
+            });
+
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux'
+                }
+            });
+        });
+    </script>
+{% endblock %}

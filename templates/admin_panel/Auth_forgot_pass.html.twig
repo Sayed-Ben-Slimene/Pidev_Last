@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<!-- soccer/project/login.html  07 Jan 2020 03:42:43 GMT -->
+<head>
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% endblock %}
+    {% block stylesheet %}
+        <link rel="icon" href="AdminPanel/favicon.ico" type="image/x-icon"/>
+        {% block title %}
+            <title>:Auth :Login</title>
+        {% endblock %}
+        <!-- Bootstrap Core and vandor -->
+        <link rel="stylesheet" href="AdminPanel/asset/plugins/bootstrap/css/bootstrap.min.css" />
+        <!-- Core css -->
+        <link rel="stylesheet" href="AdminPanel/asset/css/main.css"/>
+        <link rel="stylesheet" href="AdminPanel/asset/css/theme1.css"/>
+    {% endblock %}
+</head>
+{% block body %}
+    <body class="font-montserrat">
+
+    <div class="auth">
+        <div class="auth_left">
+            <div class="card">
+                <div class="text-center mb-5">
+                    <a class="header-brand" href="{{path('app_admin')}}"><i class="fa fa-soccer-ball-o brand-logo"></i></a>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Mot de passe oublié</div>
+                    <p class="text-muted">Entrez votre adresse e-mail et votre mot de passe sera réinitialisé et vous sera envoyé par e-mail.</p>
+                    <div class="form-group">
+                        <label class="form-label" for="exampleInputEmail1">Address Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-footer">
+                        <button href="{{path('Auth_login')}}" type="submit" class="btn btn-primary btn-block">Envoyez-moi un nouveau mot de passe</button>
+                    </div>
+                </div>
+                <div class="text-center text-muted">
+                    Forget it, <a href="{{path('Auth_login')}}">Send me Back</a> to the Sign in screen.
+                </div>
+            </div>
+        </div>
+        <div class="auth_right full_img"></div>
+    </div>
+{% block js %}
+    <script src="AdminPanel/asset/bundles/lib.vendor.bundle.js"></script>
+    <script src="AdminPanel/asset/js/core.js"></script>
+    {% endblock %}
+    </body>
+{% endblock %}
+<!-- soccer/project/login.html  07 Jan 2020 03:42:43 GMT -->
+</html>

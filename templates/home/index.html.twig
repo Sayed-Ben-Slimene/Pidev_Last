@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> {% block title %}Sprotify{% endblock %}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block css %}
+
+        <link rel="preconnect" href="{{asset('https://fonts.googleapis.com')}}">
+
+        <link rel="preconnect" href="{{asset('https://fonts.gstatic.com')}}" crossorigin>
+
+        <link href="{{asset('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap')}}" rel="stylesheet">
+        <link rel="apple-touch-icon" href="{{asset('asset/apple-touch-icon.png')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/normalize.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/transitions.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/prettyPhoto.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/swiper.min.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/jquery-ui.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/animate.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/owl.theme.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/customScrollbar.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/icomoon.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/color.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
+    {% endblock %}
+</head>
+{% block body %}
+    <body>
+    <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+        <!--              Mobile Menu Start *************************************-->
+        <div id="tg-navigationm-mobile" class="tg-navigationm-mobile tg-navigation collapse navbar-collapse">
+            <span id="tg-close" class="tg-close fa fa-close"></span>
+            <div class="tg-colhalf">
+                <ul>
+                    <li class="active menu-item-has-children">
+                        <a href="#">HOME</a>
+
+                    </li>
+
+                    <li>
+                        <a href="#">EVENTS </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="tg-colhalf">
+                <ul>
+                    <li class="menu-item-has-children">
+                        <a href="#">MATCH</a>
+
+                    </li>
+
+                    <li>
+                        <a href="#">CONTACT</a>
+                    </li>
+                    <li>
+                        <a href="#">SHOP</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!--************************************
+                                                                            Mobile Menu End
+                                                                    *************************************-->
+        <!--************************************
+                                                                            Header Start
+                                                                    *************************************-->
+        <header id="tg-header" class="tg-header tg-haslayout">
+            <div class="container">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="tg-topbar tg-haslayout">
+                            <nav id="tg-topaddnav" class="tg-topaddnav">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-addnavigationm-mobile">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div id="tg-addnavigationm-mobile" class="tg-addnavigationm-mobile collapse navbar-collapse">
+                                    <div class="tg-colhalf pull-right">
+                                        <nav class="tg-addnav">
+                                            <ul>
+
+
+
+                                                <li>
+                                                    {% if app.user %}
+                                                    <li>
+                                                    <a href="{{ path('app_logout') }}" data-target="#">Profile</a>
+                                                    </li>
+                                                    <a href="{{ path('app_logout') }}" data-target="#">logout</a>
+
+                                                    {% else %}
+                                                    <a href="{{path('app_register') }}" data-target="#tg-register">Register</a>
+                                                <li>
+                                                    <a href="{{path('app_login') }}" data-target="#tg-login">login</a>
+                                                </li>
+                                                    {% endif %}
+                                                </li>
+                                                <li>
+                                                    <div class="tg-cart">
+                                                        <a href="javascript:void(0)" class="dropdown-toggle" id="tg-cartdropdown" data-toggle="dropdown">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </a>
+                                                        <div class="tg-cartcontent dropdown-menu" aria-labelledby="tg-cartdropdown">
+                                                            <ul>
+                                                                <li>
+                                                                    <figure>
+                                                                        <a href="#">
+                                                                            <img src="{{asset('asset/images/thumbnails/img-01.jpg')}}" alt="image description">
+                                                                        </a>
+                                                                    </figure>
+                                                                    <div class="tg-product-detail">
+                                                                        <h3>
+                                                                            <a href="#">Smooth 3-Stripes Scarf</a>
+                                                                        </h3>
+                                                                        <span class="tg-price">Price: $23</span>
+                                                                        <a class="tg-delete" href="#"></a>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <a id="tg-btn-search" href="javascript:void(0)">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="tg-colhalf">
+                                        <ul class="tg-socialicons">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-dribbble"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <nav id="tg-nav" class="tg-nav brand-center">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-navigationm-mobile">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <strong class="tg-logo">
+                                    <a href="{{ path('homepage') }}"><img src="{{asset('asset/images/sportifyLogo.png')}}" alt="SportifyLogo"></a>
+                                </strong>
+                            </div>
+                            <div id="tg-navigation" class="tg-navigation">
+                                <div class="tg-colhalf">
+                                    <ul>
+                                        <li class="active">
+                                            <a href="#">Home</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="buyticket.html">EVENTS</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Match </a>
+                                            <ul class="tg-dropdown-menu">
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tg-colhalf">
+                                    <ul>
+                                        <li>
+                                            <a href="#">shop</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#contact">Contact</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--************************************
+                                                                            Header End
+                                                                    *************************************-->
+        <!--************************************
+                                                                            Home Slider Start
+                                                                    *************************************-->
+        <div class="tg-sliderbox">
+            <div class="tg-imglayer">
+                <img src="asset/images/bg-pattran.png" alt="image desctription">
+            </div>
+            <div id="tg-home-slider" class="tg-home-slider tg-haslayout">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="container">
+                            <figure class="floating">
+                                <img src="{{asset('asset/images/slider/img-01.png')}}" alt="image description">
+                            </figure>
+                            <div class="tg-slider-content">
+                                <h1>La Reference
+                                    <span>De Football</span>
+                                </h1>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="container">
+                            <figure class="floating">
+                                <img src="{{asset('asset/images/slider/img-01.png')}}" alt="image description">
+                            </figure>
+
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="container">
+                            <figure class="floating">
+                                <img src="{{asset('asset/images/slider/img-01.png')}}" alt="image description">
+                            </figure>
+                            <div class="tg-slider-content">
+                                <h1>alive and
+                                    <span>kickin</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tg-btn-next">
+                    <span>next</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+                <div class="tg-btn-prev">
+                    <span>prev</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </div>
+        </div>
+        <!--************************************
+                                                                            Home Slider End
+                                                                    *************************************-->
+        <!--************************************
+                                                                            Main Start
+                                                                    *************************************-->
+        <main
+                id="tg-main" class="tg-main tg-haslayout">
+            <!--************************************
+                                                                                                        About Us Start
+                                                                                                *************************************-->
+            <section class="tg-main-section tg-haslayout">
+                <div class="container">
+                    <div class="tg-section-name">
+                        <h2>About pro soccer</h2>
+                    </div>
+                    <div class="col-sm-11 col-xs-11 pull-right">
+                        <div class="row">
+                            <div class="tg-aboutussection">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <figure>
+                                            <img src="{{asset('asset/images/img-01.jpg')}}" alt="image description">
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="tg-contentbox">
+                                            <div class="tg-section-heading">
+                                                <h2>consectetur adipisicing elit sed do eiusmid tempor incididunt labore</h2>
+                                            </div>
+                                            <div class="tg-description">
+                                                <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt utia labore et dolore magna aliqua enim ad minim veniam quistrud on ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum doloreeu fugiat nulla pariatur cepteur sint occaecat.</p>
+                                            </div>
+                                            <div class="tg-btnbox">
+                                                <a class="tg-btn" href="#">
+                                                    <span>read more</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--************************************
+                                                                                                        About Us End
+                                                                                                *************************************-->
+            <!--************************************
+                                                                                                        Upcoming Match Start
+                                                                                                *************************************-->
+            <section class=" tg-haslayout tg-bgstyleone">
+                <div class="tg-bgboxone"></div>
+                <div class="tg-bgboxtwo"></div>
+                <div class="tg-bgpattrant">
+                    <div class="container">
+                        <div class="row">
+                            <div class="tg-upcomingmatch-counter">
+                                <div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
+                                    <figure>
+                                        <img src="{{asset('asset/images/img-02.png')}}" alt="image description">
+                                    </figure>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <div class="tg-contentbox">
+                                        <div class="tg-section-heading">
+                                            <h2>Gladiators
+                                                <span>VS</span>
+                                                Horned Frogs</h2>
+                                        </div>
+                                        <div class="tg-description">
+                                            <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minimam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                        <div class="tg-counters">
+                                            <div class="tg-counter tg-days"></div>
+                                            <div class="tg-counter tg-hours"></div>
+                                            <div class="tg-counter tg-minutes"></div>
+                                            <div class="tg-counter tg-seconds"></div>
+                                        </div>
+                                        <div class="tg-btnbox">
+                                            <a class="tg-btn" href="#">
+                                                <span>read more</span>
+                                            </a>
+                                            <a class="tg-btn" href="#">
+                                                <span>book my ticket</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tg-main-section tg-haslayout">
+                <div class="container">
+                    <div class="tg-section-name">
+                        <h2>Latest blog / news</h2>
+                    </div>
+                    <div class="col-sm-11 col-xs-11 pull-right">
+                        <div class="row">
+                            <div class="tg-blogpost">
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <article class="tg-post">
+                                            <figure class="tg-postimg">
+                                                <a href="#">
+                                                    <img src="{{asset('asset/images/blog/img-01.jpg')}}" alt="image description">
+                                                </a>
+                                                <figcaption>
+                                                    <ul class="tg-postmetadata">
+                                                        <li>
+                                                            <a href="#">by admin</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">04 comments</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">lifestyle</a>
+                                                        </li>
+                                                    </ul>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="tg-posttitle">
+                                                <h3>
+                                                    <a href="#">dipisicing elit sed do eiusmod tempor indunt</a>
+                                                </h3>
+                                            </div>
+                                            <div class="tg-description">
+                                                <p>Consectetur adipisicing elit sed do eiusmod temport incididunt utia labore et dolore magna aliqua enima ad minim veniam quistrud on ullamco laboris nisiut aliquip exea commodo consequat.</p>
+                                            </div>
+                                            <a class="tg-btn" href="#">Read more</a>
+                                        </article>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <article class="tg-post">
+                                            <figure class="tg-postimg">
+                                                <a href="#">
+                                                    <img src="{{asset('asset/images/blog/img-02.jpg')}}" alt="image description">
+                                                </a>
+                                                <figcaption>
+                                                    <ul class="tg-postmetadata">
+                                                        <li>
+                                                            <a href="#">by admin</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">04 comments</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">lifestyle</a>
+                                                        </li>
+                                                    </ul>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="tg-posttitle">
+                                                <h3>
+                                                    <a href="#">dipisicing elit sed do eiusmod tempor indunt</a>
+                                                </h3>
+                                            </div>
+                                            <div class="tg-description">
+                                                <p>Consectetur adipisicing elit sed do eiusmod temport incididunt utia labore et dolore magna aliqua enima ad minim veniam quistrud on ullamco laboris nisiut aliquip exea commodo consequat.</p>
+                                            </div>
+                                            <a class="tg-btn" href="#">
+                                                <span>read more</span>
+                                            </a>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--************************************
+                                                                                                        Blog End
+                                                                                                *************************************-->
+        </main>
+        <!--************************************
+                                                                            Main End
+                                                                    *************************************-->
+        <!--************************************
+                                                                            Footer Start
+
+                                                *************************************-->
+        <footer id="tg-footer" class="tg-footer tg-haslayout">
+            <div class="tg-haslayout tg-footerinfobox">
+                <div class="tg-bgboxone"></div>
+                <div class="tg-bgboxtwo"></div>
+                <div class="tg-footerinfo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="tg-footercol">
+                                    <div class="tg-haslayout">
+                                        <strong class="tg-logo">
+                                            <a href="{{ path('homepage') }}">
+                                                <img src="{{asset('asset/images/sportifyLogo.png')}}" alt="image description">
+                                            </a>
+                                        </strong>
+                                    </div>
+                                    <div class="tg-description">
+                                        <p>Consectetur adipisicing elit sedtado eiusmod dunt ut labore et dolore magna aliqua enim minim veniami quis nostrud.</p>
+                                    </div>
+                                    <ul class="tg-contactinfo">
+                                        <li>
+                                            <i class="fa fa-home"></i>
+                                            <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a href="info%40domain.html">info@domain.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-phone"></i>
+                                            <span>+44 123 456 788 - 9</span>
+                                        </li>
+                                    </ul>
+                                    <div class="tg-haslayout">
+                                        <a class="tg-btn" href="#">read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tg-footerbar">
+                <div class="container">
+                    <span class="tg-copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+                    <nav class="tg-footernav">
+                        <ul>
+                            <li><a href="#">Main</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Buy Tickets</a></li>
+                            <li><a href="#">Match Results</a></li>
+                            <li><a href="#">Upcoming Matches</a></li>
+                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+        <!--************************************
+                                                                            Footer End
+                                                                    *************************************-->
+    </div>
+    <!--************************************
+                                                Wrapper End
+                                        *************************************-->
+    <!--************************************
+                                                Search Start
+                                        *************************************-->
+    <div class="tg-searchbox">
+        <a id="tg-close-search" class="tg-close-search" href="javascript:void(0)">
+            <span class="fa fa-close"></span>
+        </a>
+        <div class="tg-searcharea">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <form class="tg-form-search">
+                            <fieldset>
+                                <input type="search" class="form-control" placeholder="keyword">
+                                <i class="icon-icon_search2"></i>
+                            </fieldset>
+                        </form>
+                        <p>Start typing and press Enter to search</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {% block js %}
+        <script src="{{asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+
+        <script src="{{asset('asset/js/vendor/jquery-library.js')}}"></script>
+        <script src="{{asset('asset/js/vendor/bootstrap.min.js')}}"></script>
+        <script src="{{asset('asset/js/customScrollbar.min.js')}}"></script>
+        <script src="{{asset('asset/js/owl.carousel.js')}}"></script>
+        <script src="{{asset('asset/js/isotope.pkgd.js')}}"></script>
+        <script src="{{asset('asset/js/prettyPhoto.js')}}"></script>
+        <script src="{{asset('asset/js/swiper.min.js')}}"></script>
+        <script src="{{asset('asset/js/jquery-ui.js')}}"></script>
+        <script src="{{asset('asset/js/countTo.js')}}"></script>
+        <script src="{{asset('asset/js/appear.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+    {% endblock %}
+    </body>
+{% endblock %}
+
+</html>

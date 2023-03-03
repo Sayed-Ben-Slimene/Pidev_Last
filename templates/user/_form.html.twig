@@ -1,0 +1,92 @@
+<div id="main_content">
+    <div class="section-body">
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="Company_Settings">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+                                    <form>
+                                        <div class="form-row" >
+                                            <div class="col">
+                                                {{ form_label(form.nom,"Nom") }}
+                                                {{ form_widget(form.nom,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.nom) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.nom) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col">
+                                                {{ form_label(form.prenom,"Prenom") }}
+                                                {{ form_widget(form.prenom,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.prenom) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.prenom) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row" >
+                                            <div class="col">
+                                                {{ form_label(form.tel,"Telephone") }}
+                                                {{ form_widget(form.tel,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.tel) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.tel) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col">
+                                                {{ form_label(form.adress,"Adress") }}
+                                                {{ form_widget(form.adress,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.adress) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.adress) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row" >
+                                            <div class="col">
+                                                {{ form_label(form.email,"Email") }}
+                                                {{ form_widget(form.email,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.email) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.email) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col">
+                                                {{ form_label(form.password,"Password") }}
+                                                {{ form_widget(form.password,{ 'attr': {'class': 'form-control'} }) }}
+                                                {% if form_errors(form.password) is not empty %}
+                                                    <div class="alert text-danger" >
+                                                        {{ form_errors(form.password) }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <br>
+                                        {{ form_rest(form) }}
+                                        <br>
+                                        <div class="col-sm-12 text-right m-t-20">
+                                            <button class="btn btn-primary btn-lg btn-block">{{ button_label|default('Enregistrer') }}</button>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

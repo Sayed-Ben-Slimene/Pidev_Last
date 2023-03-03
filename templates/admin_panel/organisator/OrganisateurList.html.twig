@@ -1,0 +1,167 @@
+{% extends 'admin_panel/Admin.html.twig' %}
+
+{% block title %}Organisateur List{% endblock %}
+
+    {% block  pagetop %}
+        <div id="page_top" class="section-body top_dark">
+            <div class="container-fluid">
+                <!-- page header start-->
+                <div class="page-header">
+                    <div class="left">
+                        <a href="javascript:void(0)" class="icon menu_toggle mr-3"><i class="fa  fa-align-left"></i></a>
+                        <h1 class="page-title">Profils Utilisateurs</h1>
+                    </div>
+                    <div class="right">
+                        <div class="input-icon xs-hide mr-4">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-icon-addon"><i class="fe fe-search"></i></span>
+                        </div>
+                        <!-- notification flex -->
+                        <div class="notification d-flex">
+                            <div class="dropdown d-flex">
+                                <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success nav-unread"></span></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <ul class="right_chat list-unstyled w350 p-0">
+                                        <li class="online">
+                                            <a href="javascript:void(0);" class="media">
+                                                <img class="media-object" src="{{ asset('AdminPanel/asset/images/xs/avatar4.jpg')}}" alt="">
+                                                <div class="media-body">
+                                                    <span class="name">Donald Gardner</span>
+                                                    <div class="message">It is a long established fact that a reader</div>
+                                                    <small>11 mins ago</small>
+                                                    <span class="badge badge-outline status"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="online">
+                                            <a href="javascript:void(0);" class="media">
+                                                <img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar5.jpg')}}" alt="">
+                                                <div class="media-body">
+                                                    <span class="name">Wendy Keen</span>
+                                                    <div class="message">There are many variations of passages of Lorem Ipsum</div>
+                                                    <small>18 mins ago</small>
+                                                    <span class="badge badge-outline status"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="offline">
+                                            <a href="javascript:void(0);" class="media">
+                                                <img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar2.jpg')}}" alt="">
+                                                <div class="media-body">
+                                                    <span class="name">Matt Rosales</span>
+                                                    <div class="message">Contrary to popular belief, Lorem Ipsum is not simply</div>
+                                                    <small>27 mins ago</small>
+                                                    <span class="badge badge-outline status"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="online">
+                                            <a href="javascript:void(0);" class="media">
+                                                <img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar3.jpg')}}" alt="">
+                                                <div class="media-body">
+                                                    <span class="name">Phillip Smith</span>
+                                                    <div class="message">It has roots in a piece of classical Latin literature from 45 BC</div>
+                                                    <small>33 mins ago</small>
+                                                    <span class="badge badge-outline status"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="javascript:void(0)" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
+                                </div>
+                            </div>
+                            <div class="dropdown d-flex">
+                                <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
+                                    <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
+                                    <a class="dropdown-item" href="javascript:void(0)"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
+                                    <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-send"></i> Message</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> Need help?</a>
+                                    <a class="dropdown-item" href="login.html"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- page header end -->
+            </div>
+        </div>
+    {% endblock %}
+
+{% block body %}
+<div id="main_content">
+    <div class="page-loader-wrapper">
+        <div class="loader">
+        </div>
+    </div>
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between mb-2">
+                                    <ul class="nav nav-tabs b-none">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i>Liste des organisateurs </a></li>
+                                        <li class="nav-item"><a href="{{ path('app_organisator_new') }}" class="nav-link" ><i class="fa fa-plus"></i> Ajouter nouveau</a></li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-6">
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" placeholder="Clinet Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-4 col-sm-6">
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" placeholder="Project">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-12">
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-block mb-1" title="">Recherche</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="list" role="tabpanel">
+                        <div class="row clearfix">
+                            {% for user in users %}
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body text-center ribbon">
+                                        <img class="rounded-circle p-1 bg-primary"  width="160" src="{{asset('uploads/users/'~user.image)}}"  alt="Profile Photo">
+                                        <h6 class="mt-3 mb-0">{{ user.prenom }} {{ user.nom }}</h6>
+                                        <span>{{ user.email }}</span>
+                                        <ul class="mt-3 list-unstyled d-flex justify-content-center">
+                                            <button class="btn btn-outline-success" onclick="window.location.href ='{{ path('app_organisator_edit', {'id': user.id}) }}';">Modifier</button>
+                                            <button class="btn btn-outline-danger" onclick="window.location.href ='{{ path('app_organisator_show', {'id': user.id}) }}';">  Voir Profil   </button>
+                                        </ul>
+                                        <div class="row text-center mt-4">
+                                            <div class="col-6 border-right">
+                                                <label class="mb-0">{{ user.tel }}</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="mb-0">***********</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
