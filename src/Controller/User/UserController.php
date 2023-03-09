@@ -8,9 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+
 // @dth: to encode the pass
 #[Route('/user')]
 class UserController extends AbstractController
@@ -24,11 +28,14 @@ class UserController extends AbstractController
     #[Route('/fans', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+        $users = $userRepository->findByRole('ROLE_USER');
         return $this->render('user/indexuser.html.twig', [
-            'users' => $userRepository->findAll(),
+
+            'users' => $users,
         ]);
     }
 
+    
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository , SluggerInterface $slugger): Response
     {
@@ -36,6 +43,15 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $email = (new Email())
+                ->from('sportifyapp00@gmail.com')
+                ->to ('sayedbenslimane@gmail.com')
+                ->subject('registration done')
+                ->text('vous avez registrez seuccsfly');
+            $transport = new GmailSmtpTransport('sportifyapp00@gmail.com','rulrljfrzqctiqcd');
+            $mailer=new Mailer($transport);
+            $mailer->send($email);
+
             $plainpwd = $user->getPassword();
             $encoded = $this->passwordEncoder->encodePassword($user, $plainpwd);
             $user->setPassword($encoded);
@@ -63,6 +79,7 @@ class UserController extends AbstractController
                 $user->setImage($newFilename);
             }
             $userRepository->save($user, true);
+
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('user/new.html.twig', [

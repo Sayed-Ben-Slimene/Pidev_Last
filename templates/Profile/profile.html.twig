@@ -1,0 +1,56 @@
+{% extends 'home/PageVideHome.html.twig' %}
+
+{% block title %} show User{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                        <div class="card c_grid c_yellow">
+                            <div class="card-body text-center">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img class="rounded-circle p-1 bg-primary"  width="200" src="{{asset('uploads/users/'~user.image)}}"  alt="Profile Photo">
+                                <br>
+                                <h5>{{ app.user.prenom }} {{ app.user.nom }}</h5>
+                            </div>
+                            <ul class="mt-3 list-unstyled ">
+                                <button class="btn btn-success" onclick="window.location.href ='{{ path('app_profile_edit', {'id': user.id}) }}';">Modifier</button>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="summernote">
+                                <br>
+                                <h6>. Organisateur ID : {{ user.id }}</h6>
+                                <br>
+                                <h6>. Adress Email : {{ user.email }}</h6>
+                                <br>
+                                <h6>. Nom & Prenom : {{ user.prenom }} {{ user.nom}} </h6>
+                                <br>
+                                <h6>. Téléphone : +216 {{ user.tel }} </h6>
+                                <br>
+                                <h6>. Adress : {{ user.adress }}</h6>
+                                <br>
+
+                            </div>
+                            <div class="mt-4 text-right">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

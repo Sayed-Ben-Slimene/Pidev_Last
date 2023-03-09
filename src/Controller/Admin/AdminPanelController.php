@@ -12,7 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 
+#[Route('/admin')]
 class AdminPanelController extends AbstractController
 {
     private UserPasswordEncoderInterface $passwordEncoder;
@@ -20,7 +22,7 @@ class AdminPanelController extends AbstractController
     {
         $this->passwordEncoder = $passwordEncoder;
     }
-    #[Route('/admin', name: 'app_admin')]
+    #[Route('/', name: 'app_admin')]
     public function index(): Response
     {
         return $this->render('admin_panel/PageHomeAdmin.html.twig');
@@ -33,12 +35,14 @@ class AdminPanelController extends AbstractController
     }
 
     #[Route('/neworganisator', name: 'app_organisator_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository , SluggerInterface $slugger): Response
+    public function new(Request $request, UserRepository $userRepository , SluggerInterface $slugger,FlashyNotifier $flashy): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $flashy->success('E-mail  de réinitialisation du mp envoyé !!');
+
             $plainpwd = $user->getPassword();
             $encoded = $this->passwordEncoder->encodePassword($user, $plainpwd);
             $user->setPassword($encoded);
@@ -132,8 +136,10 @@ class AdminPanelController extends AbstractController
     #[Route('/organisateurList', name: 'Organisateurlist',  methods: ['GET'])]
     public function Organisateurlist(UserRepository $userRepository): Response
     {
+        $users = $userRepository->findByRole('ROLE_ORGANISATOR');
+
         return $this->render('admin_panel/organisator/OrganisateurList.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $users,
         ]);
     }
 

@@ -73,6 +73,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups("users")]
     private ?string $image  ="default.png";
 
+    #[ORM\Column(length: 180, nullable: true)]
+    #[Groups("users")]
+    private ?string $reset_token;
+
+    public function getResetToken(): string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken($reset_token): void
+    {
+        $this->reset_token = $reset_token;
+    }
+
+
     public function getImage(): ?string
     {
         return $this->image;
@@ -197,6 +212,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
+
+
 
 }
 

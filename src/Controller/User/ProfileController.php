@@ -2,6 +2,7 @@
 
 namespace App\Controller\User;
 use App\Entity\User;
+use App\Form\UserRegisterType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,18 +10,31 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfileController extends AbstractController
 {
-    #[Route('/profileUser', name: 'app_profile', methods: ['GET', 'POST'])]
-    public function editprofile(Request $request, User $user, UserRepository $userRepository , SluggerInterface $slugger): Response
+    private $passwordEncoder;
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
-        $form = $this->createForm(UserType::class, $user );
+        $this->passwordEncoder = $passwordEncoder;
+    }
+    #[Route('/{id}/profile', name: 'app_profile_show', methods: ['GET'])]
+    public function show(User $user): Response
+    {
+        return $this->render('Profile/profile.html.twig', [
+            'user' => $user,
+
+        ]);
+    }
+    #[Route('/{id}/editProfile', name: 'app_profile_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, User $user, UserRepository $userRepository , SluggerInterface $slugger): Response
+    {
+        $form = $this->createForm(UserRegisterType::class, $user );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $plainpwd = $user->getPassword();
             $encoded = $this->passwordEncoder->encodePassword($user, $plainpwd);
             $user->setPassword($encoded);
@@ -51,15 +65,15 @@ class ProfileController extends AbstractController
             }
             $userRepository->save($user, true);
 
-            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
-
-
-        return $this->renderForm('profile/profile.html.twig', [
+        return $this->renderForm('Profile/editProfile.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
     }
+
+
 
     
 }

@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="{{asset('bundles/mercuryseriesflashy/css/flashy.css')}}">
+
     <link rel="icon" href="{{ asset('AdminPanel/asset/favicon.ico')}}" type="image/x-icon"/>
 
     <title>
@@ -355,6 +357,7 @@
 
 
 {% block js %}
+<script src="{{asset('bundles/mercuryseriesflashy/js/flashy.js')}}"> </script>
 
     <script src="{{ asset('AdminPanel/asset/bundles/lib.vendor.bundle.js')}}"></script>
     <script src="{{ asset('AdminPanel/asset/bundles/apexcharts.bundle.js')}}"></script>
@@ -371,5 +374,6 @@
 
 </body>
 {% endblock %}
+{{include('@MercurySeriesFlashy/flashy.html.twig')}}
 
 </html>

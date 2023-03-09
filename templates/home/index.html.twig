@@ -32,7 +32,6 @@
         <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
     {% endblock %}
 </head>
-{% block body %}
     <body>
     <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
         <!--              Mobile Menu Start *************************************-->
@@ -42,7 +41,6 @@
                 <ul>
                     <li class="active menu-item-has-children">
                         <a href="#">HOME</a>
-
                     </li>
 
                     <li>
@@ -73,7 +71,7 @@
                                                                     *************************************-->
         <!--************************************
                                                                             Header Start
-                                                                    *************************************-->
+      {% block header %}                                                              *************************************-->
         <header id="tg-header" class="tg-header tg-haslayout">
             <div class="container">
                 <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
@@ -95,7 +93,7 @@
                                                 <li>
                                                     {% if app.user %}
                                                     <li>
-                                                    <a href="{{ path('app_logout') }}" data-target="#">Profile</a>
+                                                    <a href="{{ path('app_profile_show', {'id': app.user.id}) }}" data-target="#">Profile</a>
                                                     </li>
                                                     <a href="{{ path('app_logout') }}" data-target="#">logout</a>
 
@@ -219,12 +217,8 @@
                 </div>
             </div>
         </header>
-        <!--************************************
-                                                                            Header End
-                                                                    *************************************-->
-        <!--************************************
-                                                                            Home Slider Start
-                                                                    *************************************-->
+        {% endblock%}
+
         <div class="tg-sliderbox">
             <div class="tg-imglayer">
                 <img src="asset/images/bg-pattran.png" alt="image desctription">
@@ -291,176 +285,15 @@
                     <div class="tg-section-name">
                         <h2>About pro soccer</h2>
                     </div>
-                    <div class="col-sm-11 col-xs-11 pull-right">
-                        <div class="row">
-                            <div class="tg-aboutussection">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12 col-xs-12">
-                                        <figure>
-                                            <img src="{{asset('asset/images/img-01.jpg')}}" alt="image description">
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 col-xs-12">
-                                        <div class="tg-contentbox">
-                                            <div class="tg-section-heading">
-                                                <h2>consectetur adipisicing elit sed do eiusmid tempor incididunt labore</h2>
-                                            </div>
-                                            <div class="tg-description">
-                                                <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt utia labore et dolore magna aliqua enim ad minim veniam quistrud on ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum doloreeu fugiat nulla pariatur cepteur sint occaecat.</p>
-                                            </div>
-                                            <div class="tg-btnbox">
-                                                <a class="tg-btn" href="#">
-                                                    <span>read more</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--************************************
-                                                                                                        About Us End
-                                                                                                *************************************-->
-            <!--************************************
-                                                                                                        Upcoming Match Start
-                                                                                                *************************************-->
-            <section class=" tg-haslayout tg-bgstyleone">
-                <div class="tg-bgboxone"></div>
-                <div class="tg-bgboxtwo"></div>
-                <div class="tg-bgpattrant">
-                    <div class="container">
-                        <div class="row">
-                            <div class="tg-upcomingmatch-counter">
-                                <div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
-                                    <figure>
-                                        <img src="{{asset('asset/images/img-02.png')}}" alt="image description">
-                                    </figure>
-                                </div>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="tg-contentbox">
-                                        <div class="tg-section-heading">
-                                            <h2>Gladiators
-                                                <span>VS</span>
-                                                Horned Frogs</h2>
-                                        </div>
-                                        <div class="tg-description">
-                                            <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minimam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                        </div>
-                                        <div class="tg-counters">
-                                            <div class="tg-counter tg-days"></div>
-                                            <div class="tg-counter tg-hours"></div>
-                                            <div class="tg-counter tg-minutes"></div>
-                                            <div class="tg-counter tg-seconds"></div>
-                                        </div>
-                                        <div class="tg-btnbox">
-                                            <a class="tg-btn" href="#">
-                                                <span>read more</span>
-                                            </a>
-                                            <a class="tg-btn" href="#">
-                                                <span>book my ticket</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                 {% block body %}
+
+                 {% endblock %}
                 </div>
             </section>
 
-            <section class="tg-main-section tg-haslayout">
-                <div class="container">
-                    <div class="tg-section-name">
-                        <h2>Latest blog / news</h2>
-                    </div>
-                    <div class="col-sm-11 col-xs-11 pull-right">
-                        <div class="row">
-                            <div class="tg-blogpost">
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-12">
-                                        <article class="tg-post">
-                                            <figure class="tg-postimg">
-                                                <a href="#">
-                                                    <img src="{{asset('asset/images/blog/img-01.jpg')}}" alt="image description">
-                                                </a>
-                                                <figcaption>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">by admin</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">04 comments</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">lifestyle</a>
-                                                        </li>
-                                                    </ul>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="tg-posttitle">
-                                                <h3>
-                                                    <a href="#">dipisicing elit sed do eiusmod tempor indunt</a>
-                                                </h3>
-                                            </div>
-                                            <div class="tg-description">
-                                                <p>Consectetur adipisicing elit sed do eiusmod temport incididunt utia labore et dolore magna aliqua enima ad minim veniam quistrud on ullamco laboris nisiut aliquip exea commodo consequat.</p>
-                                            </div>
-                                            <a class="tg-btn" href="#">Read more</a>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm-6 col-xs-12">
-                                        <article class="tg-post">
-                                            <figure class="tg-postimg">
-                                                <a href="#">
-                                                    <img src="{{asset('asset/images/blog/img-02.jpg')}}" alt="image description">
-                                                </a>
-                                                <figcaption>
-                                                    <ul class="tg-postmetadata">
-                                                        <li>
-                                                            <a href="#">by admin</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">04 comments</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">lifestyle</a>
-                                                        </li>
-                                                    </ul>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="tg-posttitle">
-                                                <h3>
-                                                    <a href="#">dipisicing elit sed do eiusmod tempor indunt</a>
-                                                </h3>
-                                            </div>
-                                            <div class="tg-description">
-                                                <p>Consectetur adipisicing elit sed do eiusmod temport incididunt utia labore et dolore magna aliqua enima ad minim veniam quistrud on ullamco laboris nisiut aliquip exea commodo consequat.</p>
-                                            </div>
-                                            <a class="tg-btn" href="#">
-                                                <span>read more</span>
-                                            </a>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--************************************
-                                                                                                        Blog End
-                                                                                                *************************************-->
         </main>
-        <!--************************************
-                                                                            Main End
-                                                                    *************************************-->
-        <!--************************************
-                                                                            Footer Start
-
-                                                *************************************-->
+        <!--************************************ Main End *************************************-->
+        <!--************************************Footer Start *************************************-->
         <footer id="tg-footer" class="tg-footer tg-haslayout">
             <div class="tg-haslayout tg-footerinfobox">
                 <div class="tg-bgboxone"></div>
@@ -520,42 +353,8 @@
                 </div>
             </div>
         </footer>
-        <!--************************************
-                                                                            Footer End
-                                                                    *************************************-->
+        <!--************************************ Footer End   *******************-->
     </div>
-    <!--************************************
-                                                Wrapper End
-                                        *************************************-->
-    <!--************************************
-                                                Search Start
-                                        *************************************-->
-    <div class="tg-searchbox">
-        <a id="tg-close-search" class="tg-close-search" href="javascript:void(0)">
-            <span class="fa fa-close"></span>
-        </a>
-        <div class="tg-searcharea">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <form class="tg-form-search">
-                            <fieldset>
-                                <input type="search" class="form-control" placeholder="keyword">
-                                <i class="icon-icon_search2"></i>
-                            </fieldset>
-                        </form>
-                        <p>Start typing and press Enter to search</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
 
     {% block js %}
         <script src="{{asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
@@ -570,8 +369,7 @@
         <script src="{{asset('asset/js/jquery-ui.js')}}"></script>
         <script src="{{asset('asset/js/countTo.js')}}"></script>
         <script src="{{asset('asset/js/appear.js')}}"></script>
-        <script src="{{asset('js/main.js')}}"></script>
-    {% endblock %}
+        <script src="{{asset('asset/js/main.js')}}"></script>
     </body>
 {% endblock %}
 

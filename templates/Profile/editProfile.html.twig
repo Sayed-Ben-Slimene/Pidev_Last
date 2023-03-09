@@ -1,0 +1,40 @@
+{% extends 'home/PageVideHome.html.twig' %}
+
+{% block title %} Update User{% endblock %}
+
+{% block body %}
+<div id="main_content">
+    <div class="container">
+        <div class="main-body">
+            <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                                <div class="card-body text-center">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <img class="rounded-circle p-1 bg-primary"  width="200" src="{{asset('uploads/users/'~user.image)}}"  alt="Profile Photo">
+                                        <br>
+                                        <h5>{{ app.user.prenom }} {{ app.user.nom }}</h5>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+
+                                </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

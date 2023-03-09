@@ -1,3 +1,10 @@
 index:
     path: /
     controller: App\Controller\HomeController::index
+admin:
+    path: /admin
+    controller: App\Controller\AdminPanelController::index
+
+user:
+    path: /user
+    controller: App\Controller\UserController::index
